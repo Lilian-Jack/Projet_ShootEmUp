@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://syukorr4pepj"]
+
+[ext_resource type="Script" uid="uid://sb3ptr5dk8lv" path="res://player.gd" id="1_0e48y"]
+[ext_resource type="Texture2D" uid="uid://smutxgplx54h" path="res://space_background_pack/space_background_pack/Assets/Blue Version/blue-preview.png" id="1_epypp"]
+[ext_resource type="Texture2D" uid="uid://3udrb3c2tfpm" path="res://Art/Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Full health.png" id="2_epypp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0hol4"]
+radius = 16.0312
+
+[node name="main" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1155.0
+offset_bottom = 649.0
+texture = ExtResource("1_epypp")
+
+[node name="Player" type="Area2D" parent="."]
+script = ExtResource("1_0e48y")
+
+[node name="Player" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_epypp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_0hol4")
+
+[connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]
