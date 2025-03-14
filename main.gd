@@ -5,10 +5,12 @@ var score
 
 func Game_over():
 	$MobTimer.stop()
-
+	$HUD.show_game_over()
+	
 func new_game():
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
+	$HUD.show_message("GET READY!")
 
 
 func _on_start_timer_timeout():
@@ -27,5 +29,5 @@ func _on_mob_timer_timeout():
 	mob.linear_velocity = velocity.rotated(direction)
 	
 	add_child(mob)
-func _ready():
-	new_game()
+#func _ready():
+#	new_game()

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4o1i3xhga4g6"]
+[gd_scene load_steps=9 format=3 uid="uid://b4o1i3xhga4g6"]
 
 [ext_resource type="Script" uid="uid://sb3ptr5dk8lv" path="res://player.gd" id="1_0e48y"]
 [ext_resource type="Texture2D" uid="uid://smutxgplx54h" path="res://Art/space_background_pack/space_background_pack/Assets/Blue Version/blue-preview.png" id="1_epypp"]
 [ext_resource type="Script" uid="uid://c7yt6hjv8bdjl" path="res://main.gd" id="1_q6r6c"]
 [ext_resource type="Texture2D" uid="uid://3udrb3c2tfpm" path="res://Art/Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Full health.png" id="2_epypp"]
 [ext_resource type="PackedScene" uid="uid://c14oxegewnrk1" path="res://scènes/mob.tscn" id="2_kdubu"]
+[ext_resource type="PackedScene" uid="uid://c7atgxuueuups" path="res://scènes/hud.tscn" id="6_kdubu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0hol4"]
 radius = 16.0312
@@ -50,7 +51,10 @@ curve = SubResource("Curve2D_d21ai")
 position = Vector2(0, 40)
 rotation = 1.5708
 
+[node name="HUD" parent="." instance=ExtResource("6_kdubu")]
+
 [connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]
 [connection signal="hit" from="Player" to="." method="Game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]
